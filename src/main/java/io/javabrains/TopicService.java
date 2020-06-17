@@ -22,7 +22,7 @@ public class TopicService {
 	
 	public List<Topic> getAllTopics() {
 		//return topics;
-		return restTemplate.getForObject("http://localhost:8082/topics", List.class);
+		return restTemplate.getForObject("http://10.0.2.129:8082/topics", List.class);
 	}
 	
 	public Topic getTopic(String Id) {
