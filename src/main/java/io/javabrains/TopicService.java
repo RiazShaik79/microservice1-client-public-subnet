@@ -5,10 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class TopicService {
 	
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	private List<Topic> topics = new ArrayList<>(Arrays.asList(
 				new Topic("spring","Spring Framework","Spring Framework Description"),
@@ -17,7 +21,8 @@ public class TopicService {
 				));
 	
 	public List<Topic> getAllTopics() {
-		return topics;
+		//return topics;
+		return restTemplate.getForObject("http://localhost:8082/topics", List.class);
 	}
 	
 	public Topic getTopic(String Id) {
